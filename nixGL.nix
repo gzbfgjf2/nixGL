@@ -136,7 +136,7 @@ let
                   ":${nvidiaLibsOnly.lib32}/share/vulkan/icd.d/nvidia_icd.i686.json"
                 }"''${VK_ICD_FILENAMES:+:$VK_ICD_FILENAMES}"''
               }
-              export GBM_BACKENDS_PATH=${lib.makeSearchPathOutput "lib" "lib/gbm" nvidiaLibsOnly}
+              export GBM_BACKENDS_PATH=${lib.makeSearchPathOutput "lib" "lib/gbm" [nvidiaLibsOnly]}
               export LD_LIBRARY_PATH=${
                 lib.makeLibraryPath ([ libglvnd nvidiaLibsOnly ]
                   ++ lib.optional (api == "Vulkan") vulkan-validation-layers
